@@ -1,3 +1,9 @@
+'''
+  Raul Angel Jimenez 19017
+  Donaldo Sebastian Garcia 19683
+  Oscar Saravia 19322
+  Modulo de distintas encriptaciones, Cifrado de informacion
+'''
 from persistence.persistence import Persistence
 
 persistenceRepo = Persistence()
@@ -41,11 +47,24 @@ class Cipher:
     # encriptac vigenere
     def Evigenere(self, key, text):
         text = persistenceRepo.filter(text)
-        encripted = ''
-        key_array = []
-        for i in range(len(text)):
-            key_array.append(key[i % len(key)])
-        
-        
-        return encripted
+        key_array = [key[i % len(key)].upper() for i in range(len(text))]
+        return ''.join(
+            self.abc[
+                (self.abc.index(text[i]) + self.abc.index(key_array[i]))
+                % len(self.abc)
+            ]
+            for i in range(len(text))
+        )
+
+    # decencriptacion vigenere
+    def Dvigenere(self, key, text):
+        key_array = [key[i % len(key)].upper() for i in range(len(text))]
+        return ''.join(
+            self.abc[
+                (self.abc.index(text[i]) - self.abc.index(key_array[i]))
+                % len(self.abc)
+            ]
+            for i in range(len(text))
+        )
+
 

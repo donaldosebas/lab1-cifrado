@@ -1,3 +1,9 @@
+'''
+  Raul Angel Jimenez 19017
+  Donaldo Sebastian Garcia 19683
+  Oscar Saravia 19322
+  Modulo para persistencia de datos y limpieza, Cifrado de informacion
+'''
 class Persistence:
     def filter(self, text):
         t = text.upper()
