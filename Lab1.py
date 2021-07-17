@@ -8,8 +8,8 @@ alphabetS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'
 
 dictS = dict([(i, alphabetS[i]) for i in range(len(alphabetS))])'''
 
-from cipher import Cipher
+from Cipher import Cipher
 
 cipher = Cipher('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ')
 
-print(cipher.ecesar(2, 'Este texto está cifrado por ecesar.'))
+print(cipher.Dafin(5, 12, 'FZEFFZMLFWMZJWEFXEG'))
