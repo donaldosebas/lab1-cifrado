@@ -38,10 +38,14 @@ class Cipher:
     def Dafin(self, a, b, text):
         return "".join(self.abc[(int((self.abc.index(l) - b) * self.inv_mod(a, len(self.abc)))) % len(self.abc)] for l in text)
 
-    # desencriptacion vigenere
-    def Dvigenere(self, key, text):
+    # encriptac vigenere
+    def Evigenere(self, key, text):
         text = persistenceRepo.filter(text)
         encripted = ''
+        key_array = []
+        for i in range(len(text)):
+            key_array.append(key[i % len(key)])
+        
         
         return encripted
 

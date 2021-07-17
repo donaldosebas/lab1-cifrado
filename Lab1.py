@@ -12,4 +12,4 @@ from Cipher import Cipher
 
 cipher = Cipher('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ')
 
-print(cipher.Dafin(5, 12, 'FZEFFZMLFWMZJWEFXEG'))
+print(cipher.Evigenere('crypto', 'Hola como estas'))
