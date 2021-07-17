@@ -4,6 +4,8 @@
   Oscar Saravia 19322
   Lab 1 Cifrado de informacion
 '''
+
+''' PRIMERA PARTE COMENTADA PARA VER LA SEGUNDA 
 import numpy as np 
 import nltk
 import re
@@ -44,6 +46,8 @@ print('Desencriptacion cifrado vigenere: \n',d3,'\n')
 from Cipher import Cipher
 
 cipher = Cipher('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ')
+mensaje = 'Esto es apenas un texto de prueba.'
+encriptado = 'ÑCDYÑCKZÑWKCEWDÑHDYNÑZBEÑLK'
 
-print(cipher.Dvigenere('palabra', 'TSEOFKAFEXATMNJEITP'))
-'''
+print(cipher.Probabilities(encriptado))
+print(len(cipher.Probabilities(encriptado)))

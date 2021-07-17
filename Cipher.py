@@ -5,9 +5,11 @@
   Modulo de distintas encriptaciones, Cifrado de informacion
 '''
 from persistence.persistence import Persistence
+import numpy as np 
+import nltk
+import re
 
 persistenceRepo = Persistence()
-
 
 class Cipher:
     def __init__(self, abc):
@@ -66,5 +68,19 @@ class Cipher:
             ]
             for i in range(len(text))
         )
+
+    def Probabilities(self, text):
+        text = persistenceRepo.filter(text)
+        tokens = re.findall('.', text)
+        freq = nltk.FreqDist(tokens)
+        freq = freq.most_common(len(self.abc))
+        freq_array = [i[1] for i in freq]
+        freq_array = np.array(freq_array)
+        p = freq_array / freq_array.sum()
+        prob = {l[0]: p[count] for count, l in enumerate(freq)}
+        for l in self.abc:
+            if l not in prob:
+                prob[l] = 0
+        return prob
 
 
