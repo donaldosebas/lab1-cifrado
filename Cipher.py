@@ -86,6 +86,7 @@ class Cipher:
         '''print(sorted(prob.items()))
         return prob'''
 
-    # def metric(self, teoric, textProb):
+    def metric(self, teoric, textProb):
+        return {l: abs(teoric[l] - textProb[l]) for l in self.abc}
 
 
