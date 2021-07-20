@@ -50,4 +50,4 @@ mensaje = 'Esto es apenas un texto de prueba.'
 encriptado = 'ÑCDYÑCKZÑWKCEWDÑHDYNÑZBEÑLK'
 
 print(cipher.Probabilities(encriptado))
-print(len(cipher.Probabilities(encriptado)))
+#print(len(cipher.Probabilities(encriptado)))

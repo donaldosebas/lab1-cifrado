@@ -69,7 +69,7 @@ class Cipher:
             for i in range(len(text))
         )
 
-    def Probabilities(self, text):
+    def Probabilities(self, text):  # sourcery skip: remove-unreachable-code
         text = persistenceRepo.filter(text)
         tokens = re.findall('.', text)
         freq = nltk.FreqDist(tokens)
@@ -81,6 +81,11 @@ class Cipher:
         for l in self.abc:
             if l not in prob:
                 prob[l] = 0
-        return prob
+        print(prob)
+        return {l: prob[l] for l in self.abc}
+        '''print(sorted(prob.items()))
+        return prob'''
+
+    # def metric(self, teoric, textProb):
 
 
