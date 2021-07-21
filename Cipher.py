@@ -115,7 +115,35 @@ class Cipher:
 
     def ForceVigenere(self, text):
         keys = []
-        a = list(permutations(self.abc))
-        posible_keys = [''.join(i) for i in a]
-        print(posible_keys)
+        options_keys = []
+        for i in range(5):
+            a = list(product(self.abc, repeat=i))
+            for j in a:
+                b = "".join(j)
+                c = 'abv'
+                try:
+                    c = self.Dvigenere(b, text)
+                except:
+                    c = 'abv'
+                d = self.Probabilities(c)
+                metric = self.metric(self.prob_teorica, d)
+                abs_error = sum(value for key, value in metric.items())
+                keys.append((b, abs_error))
+        best_key_option = sorted(keys, key=lambda x: x[1])[0][0]
+        print(best_key_option)
+        return self.Dvigenere(best_key_option, text), best_key_option
+        '''
+        options = [list(product(self.abc, repeat=(i + 1))) for i in range(6)]
+        for l in options:
+            for i in l:
+                p = "".join(i)
+                a = self.Evigenere(p, text)
+                b = self.Probabilities(a)
+                metric = self.metric(self.prob_teorica, b)
+                abs_error = sum(value for key, value in metric.items())
+                keys.append((p, abs_error))
+        print(keys)
+        best_key_option = sorted(keys, key=lambda x: x[1])[0][0]
+        return self.Evigenere(best_key_option, text), best_key_option
 
+'''
