@@ -5,6 +5,7 @@
   Modulo de distintas encriptaciones, Cifrado de informacion
 '''
 from persistence.persistence import Persistence
+from itertools import *
 import numpy as np 
 import nltk
 import re
@@ -114,4 +115,7 @@ class Cipher:
 
     def ForceVigenere(self, text):
         keys = []
+        a = list(permutations(self.abc))
+        posible_keys = [''.join(i) for i in a]
+        print(posible_keys)
 
