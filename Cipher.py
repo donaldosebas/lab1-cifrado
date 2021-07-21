@@ -98,7 +98,7 @@ class Cipher:
             abs_error = sum(value for key, value in metric.items())
             keys.append((i, abs_error))
         best_key_option = sorted(keys, key=lambda x: x[1])[0][0]
-        return self.Dcesar(best_key_option, text)
+        return self.Dcesar(best_key_option, text), best_key_option
     
     def ForceAfin(self, text):
             key = []
@@ -110,7 +110,7 @@ class Cipher:
                     abs_error = sum(value for key, value in metric.items())
                     key.append((i, j, abs_error))
             best_key_option = sorted(key, key=lambda x: x[2])[0][0:2]
-            return self.Eafin(best_key_option[0], best_key_option[1], text)
+            return self.Eafin(best_key_option[0], best_key_option[1], text), best_key_option
 
     def ForceVigenere(self, text):
         keys = []
