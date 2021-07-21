@@ -40,7 +40,7 @@ class Cipher:
     def inv_mod(self, a, m):
         g, x, y = self.euclides(a, m)
         if g != 1:
-            raise Exception('modular inverse does not exist')
+            return 0
         else:
             return x % m
 
@@ -105,13 +105,13 @@ class Cipher:
             key = []
             for i in range(len(self.abc)):
                 for j in range(len(self.abc)):
-                    a = self.Eafin(i, j, text)
+                    a = self.Dafin(i, j, text)
                     b = self.Probabilities(a)
                     metric = self.metric(self.prob_teorica, b)
                     abs_error = sum(value for key, value in metric.items())
                     key.append((i, j, abs_error))
             best_key_option = sorted(key, key=lambda x: x[2])[0][0:2]
-            return self.Eafin(best_key_option[0], best_key_option[1], text), best_key_option
+            return self.Dafin(best_key_option[0], best_key_option[1], text), best_key_option
 
     def ForceVigenere(self, text):
         keys = []
