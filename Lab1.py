@@ -5,7 +5,7 @@
   Lab 1 Cifrado de informacion
 '''
 
-''' PRIMERA PARTE COMENTADA PARA VER LA SEGUNDA 
+''' PRIMERA PARTE COMENTADA PARA VER LA SEGUNDA '''
 import numpy as np 
 import nltk
 import re
@@ -14,10 +14,12 @@ from Cipher import Cipher
 
 alphabetS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'
 mensaje = 'Esto es apenas un texto de prueba.'
-cipher = Cipher(alphabetS)
+probabilidad_teorica = {'A': 0.1253, 'B': 0.0142, 'C': 0.0468, 'D': 0.0586, 'E': 0.1368, 'F': 0.0069, 'G': 0.0101, 'H': 0.007, 'I': 0.0625, 'J': 0.0044, 'K': 0.0002, 'L': 0.0497, 'M': 0.0315, 'N': 0.0671, 'Ñ': 0.0031, 'O': 0.0868, 'P': 0.0251, 'Q': 0.0088, 'R':0.0687, 'S':0.0798, 'T':0.0463, 'U': 0.0393, 'V': 0.009, 'W': 0.0001, 'X': 0.0022, 'Y': 0.009, 'Z': 0.0052}
+cipher = Cipher(alphabetS, probabilidad_teorica)
 llave_cesar = 10
 llave_afin = [5, 12]
 llave_vig = 'palabra'
+
 
 print('\n El texto que se va a encriptar es: ', mensaje ,'\n')
 
@@ -42,6 +44,11 @@ print('Encriptacion cifrado vigenere: \n',e3,'\n')
 d3 = cipher.Dvigenere(llave_vig, e3)
 print('Desencriptacion cifrado vigenere: \n',d3,'\n')
 
+print('\n ==========  DESENCRIPTACION POR FUERZA BRUTA  ========== \n')
+# Decifrar por fuerza bruta cesar encription
+print('\nFuerza bruta con cesar: \n')
+print(cipher.ForceCesar(e1))
+
 '''
 from Cipher import Cipher
 
@@ -53,3 +60,4 @@ probabilidad_teorica = {'A': 0.1253, 'B': 0.0142, 'C': 0.0468, 'D': 0.0586, 'E':
 print(cipher.Probabilities(encriptado))
 a = cipher.metric(probabilidad_teorica, cipher.Probabilities(encriptado))
 print(a)
+'''

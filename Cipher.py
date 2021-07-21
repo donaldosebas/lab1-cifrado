@@ -12,8 +12,9 @@ import re
 persistenceRepo = Persistence()
 
 class Cipher:
-    def __init__(self, abc):
+    def __init__(self, abc, prob_teorica):
         self.abc = abc
+        self.prob_teorica = prob_teorica
 
     def Ecesar(self, k, text):
         text = persistenceRepo.filter(text)
@@ -81,12 +82,22 @@ class Cipher:
         for l in self.abc:
             if l not in prob:
                 prob[l] = 0
-        print(prob)
         return {l: prob[l] for l in self.abc}
         '''print(sorted(prob.items()))
         return prob'''
 
     def metric(self, teoric, textProb):
         return {l: abs(teoric[l] - textProb[l]) for l in self.abc}
+
+    def ForceCesar(self, text):
+        keys = []
+        for i in range(len(self.abc)):
+            a = self.Dcesar(i, text)
+            b = self.Probabilities(a)
+            metric = self.metric(self.prob_teorica, b)
+            abs_error = sum(value for key, value in metric.items())
+            keys.append((i, abs_error))
+        best_key_option = sorted(keys, key=lambda x: x[1])[0][0]
+        return self.Dcesar(best_key_option, text)
 
 
